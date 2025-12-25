@@ -118,4 +118,42 @@ document.addEventListener('DOMContentLoaded', () => {
         slider.addEventListener('touchstart', pauseSlide);
         slider.addEventListener('touchend', resumeSlide);
     }
+
+    // Custom Sleek Smooth Scroll Enhancement
+    // This allows for a more "premium" feel on wheel/touch interaction
+    const initSmoothScroll = () => {
+        let currentScroll = window.scrollY;
+        let targetScroll = window.scrollY;
+        let isAnimating = false;
+
+        const lerp = (start, end, multiplier) => {
+            return start + (end - start) * multiplier;
+        };
+
+        const updateScroll = () => {
+            currentScroll = lerp(currentScroll, targetScroll, 0.075); // Adjust for "sleekness"
+            window.scrollTo(0, currentScroll);
+
+            if (Math.abs(currentScroll - targetScroll) > 0.5) {
+                requestAnimationFrame(updateScroll);
+            } else {
+                isAnimating = false;
+            }
+        };
+
+        window.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            targetScroll += e.deltaY;
+            targetScroll = Math.max(0, Math.min(targetScroll, document.documentElement.scrollHeight - window.innerHeight));
+
+            if (!isAnimating) {
+                isAnimating = true;
+                requestAnimationFrame(updateScroll);
+            }
+        }, { passive: false });
+    };
+
+    // Uncomment the line below to enable custom "inertia" scrolling
+    // NOTE: This can sometimes conflict with browser defaults if not tuned carefully.
+    initSmoothScroll();
 });
