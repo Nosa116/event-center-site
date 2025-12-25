@@ -32,6 +32,29 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+
+                // If it's the about section or contains counters, start them
+                const counters = entry.target.querySelectorAll('.counter');
+                if (counters.length > 0) {
+                    counters.forEach(counter => {
+                        const animate = () => {
+                            const target = +counter.getAttribute('data-target');
+                            const count = +counter.innerText.replace(/,/g, '');
+                            const speed = 200; // Adjust for faster/slower animation
+                            const inc = target / speed;
+
+                            if (count < target) {
+                                const newValue = Math.ceil(count + inc);
+                                counter.innerText = newValue.toLocaleString();
+                                setTimeout(animate, 1);
+                            } else {
+                                counter.innerText = target.toLocaleString();
+                            }
+                        };
+                        animate();
+                    });
+                }
+
                 observer.unobserve(entry.target); // Only animate once
             }
         });
