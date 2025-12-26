@@ -17,10 +17,10 @@ html {
 }
 
 :root {
-    --primary: #079200;
-    --primary-dark: #056b00;
+    --primary: #049051;
+    --primary-dark: #02341e;
     --secondary: #01539D;
-    --text-main: #2c3e50;
+    --text-main: #223141;
     /* Dark Blue-Gray for better readability than pure black */
     --text-light: #ffffff;
     --bg-body: #fcfef7;
@@ -166,7 +166,7 @@ body {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Hall-1.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Hall-5.jpg');
     /* Dark overlay for text readability */
     background-size: cover;
     background-attachment: fixed;
@@ -291,7 +291,7 @@ body {
 }
 
 .col-text p {
-    color: #666;
+    color: #454545;
     /* Softer gray for paragraph text */
     line-height: 1.8;
     margin-bottom: 30px;
@@ -817,7 +817,7 @@ body {
 
 .about-description p {
     font-size: 1.1rem;
-    color: #555;
+    color: #454545;
     margin-bottom: 25px;
     line-height: 1.8;
 }
@@ -844,7 +844,7 @@ body {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #888;
+    color: #454545;
     margin-top: 5px;
 }
 
