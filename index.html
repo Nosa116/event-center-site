@@ -16,12 +16,18 @@
         <div class="container nav-container">
             <a href="#" class="logo">Emerald's Place</a>
             <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#experiences">Experiences</a>
-                <a href="#offerings">Offerings</a>
+                <a href="index.html">Home</a>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-link">Offerings</a>
+                    <div class="dropdown-menu">
+                        <a href="halls.html">Event Halls</a>
+                        <a href="conference.html">Conference Center</a>
+                        <a href="pool.html">Swimming Pool</a>
+                        <a href="wellness.html">Wellness Center</a>
+                    </div>
+                </div>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
-                <!-- <a href="#" class="btn btn-primary">Make a Reservation</a> -->
             </div>
             <div class="hamburger">
                 <span></span>
@@ -43,156 +49,35 @@
         </div>
     </header>
 
-    <section class="section experiences-section" id="experiences">
-        <div class="container two-col">
-            <div class="col-image relative animate-on-scroll">
-                <div class="image-wrapper rounded-border">
-                    <img src="Decor-2i.jpg" alt="Elegant Lounge Experience">
-                </div>
-            </div>
-            <div class="col-text animate-on-scroll animate-delay-100">
-                <span class="subheading">Experiences</span>
-                <h2>Unmatched Elegance & Professional Service</h2>
-                <p>We pride ourselves on delivering an unforgettable atmosphere. Our interiors are meticulously designed
-                    to blend luxury with comfort, ensuring your guests feel like VIPs from the moment they arrive.</p>
-                <a href="#" class="btn-link">Explore Halls <span class="arrow">&rarr;</span></a>
-            </div>
-        </div>
-    </section>
-
-    <section class="section facilities-section" id="facilities">
-        <div class="container two-col reverse-mobile">
-            <div class="col-text animate-on-scroll">
-                <span class="subheading">Amenities</span>
-                <h2>Premium Facilities For Every Occasion</h2>
-                <p>From state-of-the-art cinematic lighting and sound systems to gourmet catering options, we provide
-                    the serious tools you need to host world-class events without the hassle.</p>
-                <a href="#" class="btn-link">Book now <span class="arrow">&rarr;</span></a>
-            </div>
-            <div class="col-collage animate-on-scroll animate-delay-200">
-                <div class="collage-grid">
-                    <div class="collage-item main">
-                        <img src="lights.jpg" alt="Stage Lighting">
-                    </div>
-                    <div class="collage-item sub1">
-                        <img src="Hall-2.jpg" alt="Catering">
-                    </div>
-                    <div class="collage-item sub2">
-                        <img src="round-table.jpg" alt="VIP Seating">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section amenities-detail-section">
-        <div class="amenities-bg">
-            <div class="img-overlay"></div>
-            <div class="container relative z-10">
-                <span class="subheading animate-on-scroll text-white">Why Emerald's place?</span>
-                <h2 class="animate-on-scroll text-white">For us, it's not just an event. It's a memory that'll last a
-                    lifetime!</h2>
-            </div>
-        </div>
-
-        <div class="container relative z-20 -mt-20">
-            <!-- Slider Navigation Buttons -->
-
-            <div class="amenities-slider-wrapper">
-                <div class="amenities-track">
-                    <!-- Card 1 -->
-                    <div class="amenity-card animate-on-scroll animate-delay-100">
-                        <div class="amenity-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm0 18c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8zm0-14c.46 0 .84.31.96.73l.04.14v3.25l2.84-1.63c.4-.23.9-.1.9.1l.08.05c.35.26.43.73.2.1-1.07l-2.84 1.63 2.84 1.63c.4.24.52.75.29 1.15l-.08.12c-.27.35-.74.42-1.12.2l-2.84-1.63V15c0 .46-.31.84-.73.96L12 16c-.46 0-.84-.31-.96-.73L11 15.13v-3.26l-2.84 1.63c-.4.23-.9.1-1.15-.29l-.08-.12c-.22-.38-.1-.88.29-1.11l.12-.06 2.84-1.63-2.84-1.63c-.4-.23-.52-.74-.29-1.15l.08-.12c.27-.35.74-.42 1.12-.2l2.84 1.63V6c0-.46.31-.84.73-.96L12 6z" />
-                            </svg>
-                        </div>
-                        <h3>Air-conditioned halls</h3>
-                        <p>Fully climate-controlled environments ensuring guest comfort in any season.</p>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="amenity-card animate-on-scroll animate-delay-200">
-                        <div class="amenity-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M7 2v11h3v9l7-12h-4l4-8z" />
-                            </svg>
-                        </div>
-                        <h3>Standby power supply</h3>
-                        <p>Uninterrupted power guarantee with our industrial-grade backup generators.</p>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="amenity-card animate-on-scroll animate-delay-100">
-                        <div class="amenity-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path
-                                    d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" />
-                            </svg>
-                        </div>
-                        <h3>Secure parking space</h3>
-                        <p>Ample, guarded parking area for the safety and convenience of your guests.</p>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div class="amenity-card animate-on-scroll animate-delay-200">
-                        <div class="amenity-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7zM9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1z" />
-                            </svg>
-                        </div>
-                        <h3>Lighting setup</h3>
-                        <p>Professional stage and ambient lighting systems for perfect event atmosphere.</p>
-                    </div>
-
-                    <!-- Card 5 -->
-                    <div class="amenity-card animate-on-scroll animate-delay-100">
-                        <div class="amenity-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path
-                                    d="M7 13h10v-2c0-2.76-2.24-5-5-5s-5 2.24-5 5v2zm12-6h-1.35c-.73-1.78-2.48-3-4.52-3-2.61 0-4.83 2.01-4.99 4.58L6.2 9h.03C5.17 9.57 4.29 10.43 3.7 11.47l-.15.26 1.74 1.01.15-.26c.26-.46.39-.75 2.56-1.51V13h-2v4h2v5h2v-5h6v5h2v-5h2v-4h-2V7z" />
-                            </svg>
-                        </div>
-                        <h3>Tables and Chairs</h3>
-                        <p>Premium banquet furniture included, with multiple arrangement options.</p>
-                    </div>
-
-                    <!-- Card 6 -->
-                    <div class="amenity-card animate-on-scroll animate-delay-200">
-                        <div class="amenity-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                            </svg>
-                        </div>
-                        <h3>On-Site Event Support Staff</h3>
-                        <p>Dedicated team available throughout your event to ensure everything runs smoothly.</p>
-                    </div>
-                </div>
-            </div>
+    <section class="section experiences-summary">
+        <div class="container text-center animate-on-scroll">
+            <span class="subheading">Welcome to Emerald's Place</span>
+            <h2>Where Every Event Becomes a Masterpiece</h2>
+            <p class="experiences-text">From grand weddings to executive conferences, we provide the
+                perfect backdrop for your most important moments. Explore our premium facilities and world-class
+                services.</p>
         </div>
     </section>
 
     <section class="section offerings-section" id="offerings">
         <div class="container offerings-header text-center animate-on-scroll">
-            <span class="subheading">Exclusive Amenities</span>
-            <h2>Premium Offerings for a Complete Experience</h2>
-            <p>More than just a venue, we provide a holistic environment designed for wellness, relaxation, and
-                professional excellence.</p>
+            <span class="subheading">Elite Amenities</span>
+            <h2>Curated Premium Offerings</h2>
+            <p>Experience a new standard of luxury with our world-class facilities, designed to complement your events
+                and elevate your lifestyle.</p>
         </div>
         <div class="container offerings-grid">
             <!-- Wellness Card -->
             <div class="offering-card animate-on-scroll">
                 <div class="offering-image">
-                    <img src="gym-1.jpg" alt="Wellness Center & Gym">
+                    <img src="assets/images/wellness-premium.png" alt="Luxury Wellness Center">
                     <div class="offering-overlay">
                         <div class="offering-content">
                             <h3>Wellness Center</h3>
-                            <p>State-of-the-art gym equipment and serene workout spaces for your physical well-being.
+                            <p>Reconnect with your vitality in our state-of-the-art gym and serene wellness spaces.
                             </p>
-                            <a href="#" class="btn-link text-white">Learn More <span class="arrow">&rarr;</span></a>
+                            <a href="wellness.html" class="btn-link text-white">Explore Gallery <span
+                                    class="arrow">&rarr;</span></a>
                         </div>
                     </div>
                 </div>
@@ -200,12 +85,14 @@
             <!-- Pool Card -->
             <div class="offering-card animate-on-scroll animate-delay-100">
                 <div class="offering-image">
-                    <img src="pool-1.jpg" alt="Swimming Pool">
+                    <img src="assets/images/pool-premium.png" alt="Infinity Swimming Pool">
                     <div class="offering-overlay">
                         <div class="offering-content">
                             <h3>Swimming Pool</h3>
-                            <p>A crystal-clear infinity pool offering a perfect escape for relaxation and leisure.</p>
-                            <a href="#" class="btn-link text-white">Learn More <span class="arrow">&rarr;</span></a>
+                            <p>A tranquil escape featuring a crystal-clear infinity pool with breathtaking sunset views.
+                            </p>
+                            <a href="pool.html" class="btn-link text-white">View Oasis <span
+                                    class="arrow">&rarr;</span></a>
                         </div>
                     </div>
                 </div>
@@ -213,13 +100,28 @@
             <!-- Conference Card -->
             <div class="offering-card animate-on-scroll animate-delay-200">
                 <div class="offering-image">
-                    <img src="conference.png" alt="Conference Center">
+                    <img src="assets/images/conference-premium.png" alt="Executive Conference Center">
                     <div class="offering-overlay">
                         <div class="offering-content">
                             <h3>Conference Center</h3>
-                            <p>Sophisticated meeting rooms with high-tech facilities for seminars and corporate
-                                gatherings.</p>
-                            <a href="#" class="btn-link text-white">Learn More <span class="arrow">&rarr;</span></a>
+                            <p>Empower your business with sophisticated meeting spaces and cutting-edge technology.</p>
+                            <a href="conference.html" class="btn-link text-white">Book Space <span
+                                    class="arrow">&rarr;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Hall Card -->
+            <div class="offering-card animate-on-scroll">
+                <div class="offering-image">
+                    <img src="assets/images/Hall-5.jpg" alt="Grand Event Halls">
+                    <div class="offering-overlay">
+                        <div class="offering-content">
+                            <h3>Event Halls</h3>
+                            <p>Grand, architecturally stunning halls designed to transform your celebrations into legacy
+                                moments.</p>
+                            <a href="halls.html" class="btn-link text-white">Explore Halls <span
+                                    class="arrow">&rarr;</span></a>
                         </div>
                     </div>
                 </div>
@@ -260,10 +162,10 @@
             <div class="about-visuals animate-on-scroll animate-delay-200">
                 <div class="image-stack">
                     <div class="image-main rounded-border">
-                        <img src="Hall-4.jpg" alt="Luxury Event Interior">
+                        <img src="assets/images/Hall-4.jpg" alt="Luxury Event Interior">
                     </div>
                     <div class="image-sub rounded-border">
-                        <img src="cake-1.jpg" alt="Detail View">
+                        <img src="assets/images/cake-1.jpg" alt="Detail View">
                     </div>
                     <div class="decorative-blob"></div>
                 </div>

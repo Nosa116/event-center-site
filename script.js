@@ -16,11 +16,23 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         const navbar = document.querySelector('.navbar');
         if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
             navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
         } else {
+            navbar.classList.remove('scrolled');
             navbar.style.background = 'linear-gradient(to bottom, rgba(0,0,0,0.8), transparent)';
         }
     });
+
+    // Mobile Dropdown Toggle
+    const dropdownLink = document.querySelector('.dropdown-link');
+    const dropdown = document.querySelector('.dropdown');
+    if (dropdownLink && window.innerWidth <= 768) {
+        dropdownLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+        });
+    }
 
     // Scroll Animation Observer
     const observerOptions = {
