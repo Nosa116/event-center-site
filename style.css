@@ -147,47 +147,188 @@ body {
     border-top-color: var(--primary);
 }
 
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
+/* Mega Menu Navigation */
+.mega-menu {
+    position: fixed;
+    top: 80px;
+    /* Adjust based on navbar padding/height */
+    left: 0;
+    width: 100vw;
     background-color: #ffffff;
-    min-width: 220px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    border-radius: 12px;
-    padding: 10px 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform: translateY(10px);
     z-index: 1001;
-    overflow: hidden;
+    padding: 30px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.dropdown:hover .dropdown-menu {
+/* Hover Bridge: Prevents menu from closing when moving mouse from link to menu */
+.mega-menu::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    /* Bridges the 80px top gap */
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: transparent;
+}
+
+.dropdown:hover .mega-menu {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
 }
 
-.dropdown-menu a {
-    color: var(--text-main) !important;
-    padding: 12px 25px;
+.mega-menu-container {
+    max-width: 1400px;
+    /* Slightly wider for the mega menu */
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.mega-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.mega-menu-card {
+    position: relative;
+    height: 250px;
+    border-radius: 20px;
+    overflow: hidden;
     text-decoration: none;
     display: block;
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-transform: none !important;
-    transition: all 0.3s ease;
-    text-align: left;
-    white-space: nowrap;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Animation base state */
+    opacity: 0;
+    transform: translateY(20px);
 }
 
-.dropdown-menu a:hover {
-    background-color: var(--bg-alt);
-    color: var(--primary) !important;
-    padding-left: 30px;
+.dropdown:hover .mega-menu-card {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
+        opacity 0.6s ease;
 }
+
+/* Staggered Entrance */
+.dropdown:hover .mega-menu-card:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.dropdown:hover .mega-menu-card:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.dropdown:hover .mega-menu-card:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.dropdown:hover .mega-menu-card:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.mega-menu-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.mega-menu-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mega-menu-img::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: 2;
+    transition: opacity 0.5s ease;
+}
+
+.mega-menu-content {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mega-menu-title {
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.1;
+    transition: transform 0.5s ease;
+}
+
+.mega-menu-footer {
+    width: 100%;
+}
+
+.mega-menu-footer .divider {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 12px;
+    transition: background-color 0.5s ease;
+}
+
+.explore-text {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.9;
+    transition: all 0.5s ease;
+}
+
+/* Hover Effects */
+.mega-menu-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transition-delay: 0s !important;
+}
+
+.mega-menu-card:hover .mega-menu-img img {
+    transform: scale(1.1);
+}
+
+.mega-menu-card:hover .mega-menu-img::after {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.9) 100%);
+}
+
+.mega-menu-card:hover .mega-menu-title {
+    transform: translateY(-5px);
+}
+
+.mega-menu-card:hover .explore-text {
+    padding-left: 10px;
+    opacity: 1;
+}
+
+.mega-menu-card:hover .divider {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
 
 /* Buttons */
 .btn {
@@ -791,7 +932,7 @@ body {
 
 .offerings-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
 }
 
@@ -799,7 +940,7 @@ body {
     position: relative;
     border-radius: 30px;
     overflow: hidden;
-    height: 500px;
+    height: 250px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
 }
