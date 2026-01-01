@@ -5,12 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hamburger) {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-
-            // Animate hamburger to X
-            const spans = hamburger.querySelectorAll('span');
-            // Simple toggle logic for visual feedback could go here
+            hamburger.classList.toggle('active');
         });
     }
+
 
     // Navbar scroll effect
     window.addEventListener('scroll', () => {
