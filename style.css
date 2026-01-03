@@ -818,22 +818,25 @@ body {
     .nav-links .dropdown-menu {
         position: static;
         transform: none;
+        left: auto;
         opacity: 1;
         visibility: visible;
         background: rgba(4, 144, 81, 0.05);
         border-radius: 12px;
         margin-top: 10px;
-        padding: 10px 0;
+        padding: 0;
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease, padding 0.3s ease;
         width: 100%;
+        box-shadow: none;
     }
 
     .nav-links .dropdown:hover .dropdown-menu,
     .nav-links .dropdown.active .dropdown-menu {
         max-height: 300px;
         padding: 10px 0;
+        transform: none;
     }
 
     .nav-links .dropdown-menu a {
