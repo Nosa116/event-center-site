@@ -1665,3 +1665,130 @@ body {
         align-items: center;
     }
 }
+
+/* ============================ */
+/* MAP SECTION STYLING */
+/* ============================ */
+
+.map-section {
+    padding: 120px 0;
+    background-color: var(--bg-body);
+}
+
+.map-header {
+    margin-bottom: 60px;
+}
+
+.map-container {
+    position: relative;
+    max-width: 1300px;
+}
+
+.map-wrapper {
+    width: 100%;
+    border-radius: 40px 0 40px 0;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    line-height: 0;
+    /* Prevents tiny gap at bottom of iframe */
+}
+
+.map-wrapper iframe {
+    filter: grayscale(0.2) contrast(1.1) brightness(0.9);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.map-wrapper:hover iframe {
+    filter: grayscale(0) contrast(1) brightness(1);
+}
+
+.map-info-card {
+    position: absolute;
+    bottom: -40px;
+    right: 40px;
+    background: #ffffff;
+    padding: 50px;
+    border-radius: 40px 0 40px 0;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    max-width: 450px;
+    z-index: 10;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.map-info-card h3 {
+    font-size: 2rem;
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+.map-info-card p {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    font-size: 1.05rem;
+}
+
+.info-details {
+    margin-bottom: 35px;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-item .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.detail-item .value {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+/* Responsive Map Section */
+@media (max-width: 1024px) {
+    .map-info-card {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        margin-top: -60px;
+        margin-left: auto;
+        margin-right: 40px;
+        padding: 40px;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .map-section {
+        padding: 80px 0;
+    }
+
+    .map-wrapper {
+        border-radius: 30px 0 30px 0;
+    }
+
+    .map-wrapper iframe {
+        height: 450px !important;
+    }
+
+    .map-info-card {
+        margin: -40px 20px 0;
+        padding: 30px;
+        border-radius: 30px 0 30px 0;
+        max-width: none;
+    }
+
+    .map-info-card h3 {
+        font-size: 1.6rem;
+    }
+}
