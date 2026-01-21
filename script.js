@@ -49,8 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     counters.forEach(counter => {
                         const animate = () => {
                             const target = +counter.getAttribute('data-target');
-                            const count = +counter.innerText.replace(/,/g, '');
-                            const speed = 200; // Adjust for faster/slower animation
+                            const currentText = counter.innerText.replace(/,/g, '');
+                            const count = isNaN(+currentText) ? 0 : +currentText;
+                            const speed = 200;
                             const inc = target / speed;
 
                             if (count < target) {
@@ -64,8 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         animate();
                     });
                 }
-
-                observer.unobserve(entry.target); // Only animate once
+            } else {
+                // Remove visible class when out of view to allow re-triggering
+                entry.target.classList.remove('visible');
             }
         });
     }, observerOptions);
