@@ -3,7 +3,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
 
     if (hamburger) {
-        hamburger.addEventListener('click', () => {
+        let isRecentlyScrolled = false;
+        let scrollLockTimeout;
+
+        window.addEventListener('scroll', () => {
+            isRecentlyScrolled = true;
+            clearTimeout(scrollLockTimeout);
+            scrollLockTimeout = setTimeout(() => {
+                isRecentlyScrolled = false;
+            }, 300); // Guard window
+        }, { passive: true });
+
+        hamburger.addEventListener('click', (e) => {
+            // Guard: If we just scrolled/swiped, ignore the click
+            if (isRecentlyScrolled) return;
+
             navLinks.classList.toggle('active');
             hamburger.classList.toggle('active');
         });
@@ -23,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Dropdown Toggle
     const dropdownLink = document.querySelector('.dropdown-link');
     const dropdown = document.querySelector('.dropdown');
-    if (dropdownLink && window.innerWidth <= 768) {
+    if (dropdownLink && window.innerWidth <= 992) {
         dropdownLink.addEventListener('click', (e) => {
             e.preventDefault();
             dropdown.classList.toggle('active');
@@ -131,39 +145,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Custom Sleek Smooth Scroll Enhancement
     // This allows for a more "premium" feel on wheel/touch interaction
-    const initSmoothScroll = () => {
-        let currentScroll = window.scrollY;
-        let targetScroll = window.scrollY;
-        let isAnimating = false;
-
-        const lerp = (start, end, multiplier) => {
-            return start + (end - start) * multiplier;
-        };
-
-        const updateScroll = () => {
-            currentScroll = lerp(currentScroll, targetScroll, 0.075); // Adjust for "sleekness"
-            window.scrollTo(0, currentScroll);
-
-            if (Math.abs(currentScroll - targetScroll) > 0.5) {
-                requestAnimationFrame(updateScroll);
-            } else {
-                isAnimating = false;
-            }
-        };
-
-        window.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            targetScroll += e.deltaY;
-            targetScroll = Math.max(0, Math.min(targetScroll, document.documentElement.scrollHeight - window.innerHeight));
-
-            if (!isAnimating) {
-                isAnimating = true;
-                requestAnimationFrame(updateScroll);
-            }
-        }, { passive: false });
-    };
-
-    // Uncomment the line below to enable custom "inertia" scrolling
-    // NOTE: This can sometimes conflict with browser defaults if not tuned carefully.
-    initSmoothScroll();
 });

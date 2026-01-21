@@ -14,6 +14,9 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    /* Global guard against off-screen elements */
+    width: 100%;
 }
 
 :root {
@@ -53,12 +56,16 @@ body {
     color: var(--text-main);
     background-color: var(--bg-body);
     line-height: 1.6;
+    overflow-x: hidden;
+    /* Guard against layout expansion */
+    width: 100%;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
+    /* Increased for safer edge distance */
 }
 
 /* Navbar */
@@ -68,19 +75,19 @@ body {
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 20px 0;
+    padding: 15px 0;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
-    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: background 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
 }
 
 .navbar.scrolled {
-    background: rgba(252, 254, 247, 0.95);
+    background: rgba(252, 254, 247, 0.98);
     /* Light Brand Ivory */
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    padding: 12px 0;
+    padding: 15px 0;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    border-bottom: 1px solid rgba(40, 98, 58, 0.05);
+    border-bottom: 1px solid rgba(40, 98, 58, 0.08);
 }
 
 .nav-container {
@@ -487,14 +494,15 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 8px;
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    padding: 10px;
     transition: all 0.3s ease;
     position: relative;
-    z-index: 1002;
+    z-index: 2200;
+    /* Extremely high to beat hero */
 }
 
 .hamburger:hover {
@@ -571,9 +579,31 @@ body {
     align-items: flex-end;
     position: relative;
     padding-bottom: 80px;
-    /* Space from bottom edge */
     padding-top: 100px;
-    /* Navbar space */
+}
+
+@media (max-width: 992px) {
+    .hero-content {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding-bottom: 40px;
+    }
+
+    .hero-text-group {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .hero h1 {
+        text-align: center;
+        font-size: 3rem;
+    }
+
+    .hero p {
+        margin: 0 auto 30px;
+    }
 }
 
 .hero-text-group {
@@ -607,6 +637,10 @@ body {
 
 /* Mobile Responsive for Hero */
 @media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
     .hero-content {
         flex-direction: column;
         justify-content: flex-end;
@@ -792,7 +826,12 @@ body {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+    .hamburger {
+        display: flex;
+        z-index: 2201;
+    }
+
     .nav-links {
         position: fixed;
         top: -100%;
@@ -802,20 +841,27 @@ body {
         max-height: calc(100vh - 80px);
         background: rgba(252, 254, 247, 0.98);
         /* Light Brand Ivory */
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        /* Disable glassmorphism on mobile for performance/gesture stability */
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
         padding: 100px 40px 40px;
         transition: top 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        z-index: 1001;
+        z-index: 2100;
         overflow-y: auto;
+        visibility: hidden;
+        /* Guard: Don't allow interaction when closed */
+        pointer-events: none;
+        /* Guard: Don't allow touch when closed */
     }
 
     .nav-links.active {
         top: 0;
+        visibility: visible;
+        pointer-events: auto;
     }
 
     .nav-links a {
@@ -1351,6 +1397,8 @@ body {
     letter-spacing: 15px;
     opacity: 0;
     transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s;
+    pointer-events: none;
+    /* Ensure it doesn't block clicks */
 }
 
 .experiences-container.visible .experiences-watermark {
@@ -1522,7 +1570,13 @@ body {
 
 @media (max-width: 992px) {
     .offerings-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        /* Single column on tablet to avoid overflow */
+        gap: 20px;
+    }
+
+    .offering-card {
+        height: 300px;
     }
 }
 
