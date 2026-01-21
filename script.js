@@ -144,5 +144,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Custom Sleek Smooth Scroll Enhancement
-    // This allows for a more "premium" feel on wheel/touch interaction
+    // This allows for a more "premium" feel on wheel interaction for desktop
+    const initSmoothScroll = () => {
+        let currentScroll = window.scrollY;
+        let targetScroll = window.scrollY;
+        let isAnimating = false;
+
+        const lerp = (start, end, multiplier) => {
+            return start + (end - start) * multiplier;
+        };
+
+        const updateScroll = () => {
+            currentScroll = lerp(currentScroll, targetScroll, 0.075);
+            window.scrollTo(0, currentScroll);
+
+            if (Math.abs(currentScroll - targetScroll) > 0.5) {
+                requestAnimationFrame(updateScroll);
+            } else {
+                isAnimating = false;
+            }
+        };
+
+        window.addEventListener('wheel', (e) => {
+            // Only apply if user is using a wheel and not inside another scrollable element
+            if (e.ctrlKey) return; // Zoom shortcut
+
+            e.preventDefault();
+            targetScroll += e.deltaY;
+            targetScroll = Math.max(0, Math.min(targetScroll, document.documentElement.scrollHeight - window.innerHeight));
+
+            if (!isAnimating) {
+                isAnimating = true;
+                requestAnimationFrame(updateScroll);
+            }
+        }, { passive: false });
+    };
+
+    // Detect mobile/touch devices to avoid gesture conflicts
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isSmallScreen = window.innerWidth <= 992;
+
+    if (!isTouchDevice && !isSmallScreen) {
+        initSmoothScroll();
+    }
 });
